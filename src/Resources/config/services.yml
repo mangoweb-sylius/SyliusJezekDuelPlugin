@@ -1,0 +1,34 @@
+services:
+    _defaults:
+        autowire: false
+        autoconfigure: false
+        public: false
+
+    MangoSylius\JezekDuelPlugin\Command\ExportCommand:
+        tags:
+            - name: 'console.command'
+        arguments:
+            $ftpService: '@MangoSylius\JezekDuelPlugin\Service\FtpService'
+            $entityManager: '@doctrine.orm.default_entity_manager'
+            $logger: '@logger'
+            $orderRepository: '@sylius.repository.order'
+            $rateResolver: '@sylius.tax_rate_resolver'
+
+    MangoSylius\JezekDuelPlugin\Command\UpdateCommand:
+        tags:
+            - name: 'console.command'
+        arguments:
+            $ftpService: '@MangoSylius\JezekDuelPlugin\Service\FtpService'
+            $entityManager: '@doctrine.orm.default_entity_manager'
+            $logger: '@logger'
+            $productVariantRepository: '@sylius.repository.product_variant'
+
+    MangoSylius\JezekDuelPlugin\Service\FtpService:
+        bind:
+            $projectDir: '%kernel.project_dir%'
+
+    MangoSylius\JezekDuelPlugin\Form\Extension\ProductVariantExtension:
+        tags:
+            - name: form.type_extension
+              extended_type: Sylius\Bundle\ProductBundle\Form\Type\ProductVariantType
+
