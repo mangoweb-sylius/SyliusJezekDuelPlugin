@@ -144,7 +144,7 @@ class ExportCommand extends Command
 		return [
 			'ID' => $order->getNumber(),
 			'USER_ID' => $order->getCustomer()->getId(),
-			'PRICEWITHVAT' => 0,
+			'PRICEWITHVAT' => 1,
 			'ORDERDATE' => $order->getCheckoutCompletedAt()->format('Y-m-d H:i:s'),
 			'ORDERNR' => $order->getNumber(),
 			'BILLCOMPANY' => $order->getBillingAddress()->getCompany(),
