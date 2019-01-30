@@ -9,12 +9,12 @@ use MangoSylius\JezekDuelPlugin\Model\OrderWithExportedAtInterface;
 use MangoSylius\JezekDuelPlugin\Model\ProductVariantWithJezekIdsInterface;
 use MangoSylius\JezekDuelPlugin\Service\FtpService;
 use Psr\Log\LoggerInterface;
-use Sylius\Component\Core\Model\AdjustmentInterface;
 use Sylius\Component\Core\Model\OrderInterface;
 use Sylius\Component\Core\Model\OrderItemInterface;
 use Sylius\Component\Core\Model\PaymentMethodInterface;
 use Sylius\Component\Core\Model\ShippingMethodInterface;
 use Sylius\Component\Core\Repository\OrderRepositoryInterface;
+use Sylius\Component\Order\Model\AdjustmentInterface;
 use Sylius\Component\Payment\Model\PaymentInterface;
 use Sylius\Component\Shipping\Model\ShipmentInterface;
 use Sylius\Component\Taxation\Model\TaxableInterface;
@@ -275,7 +275,7 @@ class ExportCommand extends Command
 			'AMOUNT' => 1,
 			'ARTNUM' => $shippingMethod->getCode(),
 			'ARTID' => $shippingMethod->getCode(),
-			'TITLE' => $shippingMethod->getName(),
+			'TITLE' => 'Poštovné: ' . $shippingMethod->getName(),
 			'VAT' => $tax,
 			'NPRICE' => $netPrice,
 			'BPRICE' => $brutPrice,
