@@ -275,7 +275,7 @@ class ExportCommand extends Command
 			'AMOUNT' => 1,
 			'ARTNUM' => $shippingMethod->getCode(),
 			'ARTID' => $shippingMethod->getCode(),
-			'TITLE' => 'Poštovné: ' . $shippingMethod->getName(),
+			'TITLE' => $shippingMethod->getName(),
 			'VAT' => $tax,
 			'NPRICE' => $netPrice,
 			'BPRICE' => $brutPrice,
